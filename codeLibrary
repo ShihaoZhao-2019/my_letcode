@@ -1,65 +1,4 @@
-/***哈希***
-#include <iostream>
-#include <ext/hash_map>
-#include <string>
-
-using namespace __gnu_cxx;
-using namespace std;
-int main(){
-        hash_map<int, string> mymap;
-        mymap[9527]="唐伯虎点秋香";
-        mymap[1000000]="百万富翁的生活";
-//        mymap[10000]="白领的工资底线";
-        if(mymap.find(10000) == mymap.end()){
-            cout<< "hello1"<<endl;
-        }
-        else{
-            cout<<  mymap[10000]<<endl;
-        }
-}
-
-//哈希的遍历
-for(auto i=mymap.begin();i!=frequent.end();i++){
-    cout<<(*i).first<<"   "<<(*i).second<<endl;
-}
-
-//删除
-hm.erase(9527);
-
-//搜索
-j=mymap.find("pear");
-i=mymap.find("apple");
-cout<<"水果："<<(*i).first<<"  "<<"价钱："<<(*i).second<<endl;
-if(j!=hm.end())
-{
-cout<<"hash_map容器的个数"<<hm.size()<<endl;
-}
-else
-{
-cout<<"哈希表的表长："<<hm.bucket_count()<<endl;
-}
-
-
-
-
-
-***/
-
-
-/***哈希2***
-#include<unordered_set>
-
-unordered_set<string> map;
-map.insert("aaaaa");
-map.count();
-map.erase();
-map.find()==map.end;
-
-***/
-
-
-
-/***01背包问题***
+/******************01背包问题************************
 
  * 给定 n 件物品，物品的重量为 w[i]，
  * 物品的价值为 c[i]。
@@ -116,8 +55,23 @@ int main()
 ***/
 
 
+/************根据先序和中序遍历重建二叉树****************
+    TreeNode* rebuildTree(vector<int> &preorder_tree,vector<int> &inorder_tree,int pLeft,int pRight,int iLeft,int iRight ){
+        if(pRight<pLeft)return NULL;
+        int root_val = preorder_tree[pLeft];
+        int root_index_in;
+        for(int i=iLeft;i<=iRight;i++)if(inorder_tree[i]==root_val){root_index_in = i-iLeft;break;}
+        TreeNode* root = new TreeNode(root_val);
+        root->left = rebuildTree(preorder_tree,inorder_tree,pLeft+1,pLeft+root_index_in,iLeft,iLeft+root_index_in-1);
+        root->right = rebuildTree(preorder_tree,inorder_tree,pLeft+root_index_in+1,pRight,iLeft+root_index_in+1,iRight);
+        return root;
 
-/***先序(中序)非递归遍历二叉树***
+    }
+
+****/
+
+
+/************先序(中序)非递归遍历二叉树*****************
 
 typedef struct TreeNode{
     int data;
@@ -144,8 +98,7 @@ void preOrder(TreeNode *T){
 ***/
 
 
-
-/***中序递归遍历二叉树***
+/*******************中序递归遍历二叉树*****************
    void Inorder(TreeNode* root)
     {
         if(root==nullptr) return;
@@ -159,8 +112,7 @@ void preOrder(TreeNode *T){
 ***/
 
 
-
-/***层次遍历二叉树1***
+/*******************层次遍历二叉树1*******************
 vector<vector<int>> levelOrder(TreeNode* root) {
     vector<vector<int>> result;
     queue<TreeNode *> nodeQueue;
@@ -180,8 +132,7 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 ***/
 
 
-
-/***层次遍历二叉树2（保留结点信息版）***
+/*******************层次遍历二叉树2（保留结点信息版）****
 vector<vector<int>> levelOrder(TreeNode* root) {
     vector<vector<int>> result;
     if(root == nullptr) return result;
@@ -222,7 +173,7 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 ***/
 
 
-/***层次遍历二叉树3（保留层次信息版）***
+/******************层次遍历二叉树3（保留层次信息版）******
     Node* connect(Node* root) {
     if(root==nullptr)return root;
     queue<Node *> nodeQueue;
@@ -254,7 +205,7 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 ***/
 
 
-/***全排列****
+/************************全排列***********************
 
 auto mySwap = [](int &a,int &b){ int temp=a;a=b;b=temp; };
 class Solution {
@@ -281,135 +232,7 @@ public:
 ***/
 
 
-/***c++常用语法***
-
-//创建一个对象指针和创建一个对象
-KthLargest* obj = new KthLargest(k, nums);
-Pointer p = Pointer("point");
-
-//for
-for(auto &c : str)
-{
-    c = toupper(c);
-}
-
- *****/
-
-
-
-/***c++队列*******
-
-#include <queue>
-
-queue<int> q1;
-
-q1.push(i);
-q1.empty();
-q1.size();
-q1.back();
-q1.front();
-q1.pop();
- * **************/
-
-
-
-/*****string操作******
-
-// 字符串转换为数字
-
-string number;
-cout<<atoi((char *)number.c_str())<<endl;
-
-//将整型转换为字符串
-to_string(i);
-
-//字符转换为字符串
-char c = 'c';
-string s(1, c);
-cout << s == "c" ? true : false << endl;
-
-//拼接字符串
-string s1 = "alan";
-string s2 = "xiho";
-
-//1.
-string s3 = s1 + s2;
-
-string s4 = " wahaha";
-
-s1.insert(2, "123");
-
-//2.
-s3.append(s4);
-
-//获取子串
-s.substr(start,length);
-
-
-
-/****vector操作****
-{
-     //合并两个vector
-     vec3.insert(vec3.end(),vec1.begin(),vec1.end());
-
-     //二维数组
-     vector<vector<int>>vec(m,vector<int>(n,0));    //m*n的二维vector，所有元素为0
-
-     //一维数组
-     vector<int> vec1{ 1, 2, 3, 4, 5, 6 };
-
-     //尾插
-     v1.push_back(10);
-     v1.push_back(20);
-
-     //尾删
-     v1.pop_back();
-
-     //插入 更换位置可以用v1.begin+n
-     v1.insert(v1.begin(), 100);
-     v1.insert(v1.begin(), 2, 1000);
-
-     //删除指定位置
-     v1.erase(v1.begin());
-     v1.erase(v1.begin(), v1.end());
-
-     //清空，并且释放内存
-     v1.clear();
-
-     //复制一个数组
-     vector<int> mat;
-     mat.assign(Vec.begin(), Vec.end());
-
-
-    //自定义排序函数
-    bool SortByM1( const Test &v1, const Test &v2)//注意：本函数的参数的类型一定要与vector中元素的类型一致
-    {
-        return v1.member1 < v2.member1;//升序排列
-    }
-
-    auto SortByM2 = [](freq &v1,freq &v2){ return v1.frequent > v2.frequent; };
-    //排序
-    std::sort(vecTest.begin(),vecTest.end(),SortByM1);
-
-    //迭代器的数据是指针
-    //迭代器
-    for (vector<int>::iterator i = vec.begin(); i != vec.end(); ++i) {  //用迭代器遍历容器
-    //begin()返回指向容器中第一个元素的迭代器。++i 使得 i 指向容器中的下一个元素。end()返回的不是指向最后一个元素的迭代器，而是指向最后一个元素后面的位置的迭代器，因此循环的终止条件是i != v.end()。
-        cout << *i << " ";  //*i 就是迭代器i指向的元素
-        *i *= 2;  //每个元素变为原来的2倍
-    }
-    //反向迭代器
-    for (vector<int>::reverse_iterator j = vec.rbegin(); j != vec.rend(); ++j)
-        //rbegin()返回指向容器中最后一个元素的迭代器，rend()返回指向容器中第一个元素前面的位置的迭代器，因此本循环实际上是从后往前遍历整个数组。
-        cout << *j << " ";
-
-
-
- }
-***/
-
-
-/***快速排序***
+/**********************快速排序***********************
 void quicksort(vector<int>& nums,int start,int end){
     if(start>=end) return;
     int i = start;
@@ -439,23 +262,7 @@ void quicksort(vector<int>& nums,int start,int end){
 ***/
 
 
-
-/***字符vector和string相互转换
-
-    vector转string
-    vector<uint8_t> Vec(6, 7);
-    string Str;
-    Str.assign(Vec.begin(), Vec.end());
-
-    string转vector
-    vector<unsigned char> Vec1;
-    string Str{"123456"};
-    Vec1.assign(Str.begin(), Str.end());
-***/
-
-
-
-/***求对数且向上取整***
+/**********************求对数且向上取整****************
 double log2Up(int n)
 {
     return ceil(log(n+1)/log(2));
@@ -463,26 +270,7 @@ double log2Up(int n)
 ***/
 
 
-
-/****lambda表达式****
- * 这样add就可以当做函数用
-#include <iostream>
-using namespace std;
-auto mySwap = [](int &a,int &b){ int temp=a;a=b;b=temp; };
-int main()
-{
-    int a = 5;
-    int b = 6;
-    mySwap(a,b);
-    cout<<a<<b<<endl;
-    return 0;
-}
-
-****/
-
-
-
-/****KMP算法生成next数组****
+/*******************KMP算法生成next数组****************
 
 
 void getNext(string substr,vector<int >& next)
