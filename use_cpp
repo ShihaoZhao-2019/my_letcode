@@ -198,3 +198,51 @@ int main()
 }
 
 ****/
+
+
+/***c++pair使用*******
+#include <utility>
+#include <iostream>
+
+int main() {
+    std::pair<int, double> my_pair(3, 3.14);
+    std::pair<char, std::string> another_pair{'a', "hello"};
+    std::pair<int, int> third_pair = {5, 10};
+
+    std::cout << my_pair.first << ", " << my_pair.second << '\n'; // 3, 3.14
+    std::cout << another_pair.first << ", " << another_pair.second << '\n'; // a, hello
+    std::cout << third_pair.first << ", " << third_pair.second << '\n'; // 5, 10
+
+    return 0;
+}
+
+#include <utility>
+#include <iostream>
+
+int main() {
+    std::pair<int, double> my_pair(3, 3.14);
+    std::cout << my_pair.first << ", " << my_pair.second << '\n'; // 3, 3.14
+    my_pair.first = 5;
+    std::cout << my_pair.first << ", " << my_pair.second << '\n'; // 5, 3.14
+
+    return 0;
+}
+
+
+#include <utility>
+#include <iostream>
+
+std::pair<int, int> divide(int numerator, int denominator) {
+    int quotient = numerator / denominator;
+    int remainder = numerator % denominator;
+    return {quotient, remainder};
+}
+
+int main() {
+    auto result = divide(17, 5);
+    std::cout << "Quotient: " << result.first << ", Remainder: " << result.second << '\n'; // Quotient: 3, Remainder: 2
+
+    return 0;
+}
+
+****/
