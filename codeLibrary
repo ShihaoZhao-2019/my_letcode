@@ -112,6 +112,37 @@ void preOrder(TreeNode *T){
 ***/
 
 
+/******************后续非递归遍历二叉树*******************
+vector<int> postorderTraversal(TreeNode* root) {
+    vector<int> output;
+    if (!root) {
+        return output;
+    }
+
+    stack<TreeNode*> s;
+    TreeNode* prev = NULL;
+
+    while (root || !s.empty()) {
+        while (root) {
+            s.push(root);
+            root = root->left;
+        }
+
+        TreeNode* curr = s.top();
+
+        if (curr->right && curr->right != prev) {
+            root = curr->right;
+        } else {
+            output.push_back(curr->val);
+            s.pop();
+            prev = curr;
+        }
+    }
+
+    return output;
+}
+***/
+
 /*******************层次遍历二叉树1*******************
 vector<vector<int>> levelOrder(TreeNode* root) {
     vector<vector<int>> result;
