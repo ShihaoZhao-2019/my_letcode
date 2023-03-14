@@ -290,6 +290,36 @@ void quicksort(vector<int>& nums,int start,int end){
     quicksort(nums,start,i-1);
     quicksort(nums,i+1,end);
 }
+
+
+void quicksort(int array[],int left,int right)
+{
+    if(left>=right)return;
+
+    int i = left;
+    int j = right;
+
+    int temp = array[left];
+    while(i<j)
+    {
+        while(i<j&&temp<=array[j])j--;
+        if(i<j)
+        {
+            array[i] = array[j];
+            i++;
+        }
+        while(i<j&&temp>=array[i])i++;
+        if(i<j)
+        {
+            array[j] = array[i];
+            j--;
+        }
+    }
+    array[i] = temp;
+
+    quicksort(array,left,i-1);
+    quicksort(array,i+1,right);
+}
 ***/
 
 
