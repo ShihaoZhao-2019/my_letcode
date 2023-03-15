@@ -354,3 +354,48 @@ void getNext(string substr,vector<int >& next)
 }
 
 ****/
+
+/******************二分查找**********************
+
+找到返回下标，找不到返回-1
+int search(vector<int>& nums, int target) {
+    int l = 0,r =nums.size()-1;
+    while(l<=r)
+    {
+        int middle = (l+r)/2;
+        if(nums[middle]>target)
+        {
+            r = middle-1;
+        }else if(nums[middle]<target)
+        {
+            l = middle + 1;
+        }else
+        {
+            return middle;
+        }
+    }
+    return -1;
+}
+
+找到搜索插入位置~大于target最小值位置（有相同值的话找最左面）
+int searchInsert(vector<int>& nums, int target) {
+    int l = 0;
+    int r = nums.size()-1;
+    int ans = nums.size();
+    while(l<=r)
+    {
+        int middle = (l+r)/2;
+        if(nums[middle]>=target)
+        {
+            ans = middle;
+            r = middle - 1;
+        }else{
+            l = middle + 1; 
+        }
+    }
+    return ans;
+}
+
+
+ */
+

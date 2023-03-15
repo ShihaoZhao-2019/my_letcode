@@ -5,9 +5,6 @@
 
 注意，数组 [a[0], a[1], a[2], ..., a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], ..., a[n-2]] 。
 
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 */
 #include<iostream>
